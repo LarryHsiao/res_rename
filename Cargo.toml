@@ -1,6 +1,6 @@
 [package]
 name = "resname"
-version = "0.1.1"
+version = "0.1.2"
 authors = ["Larry Hsiao <larryhsiao@larryhsiao.com>"]
 edition = "2018"
 description = "A tool for renaming resource files for project"

@@ -35,18 +35,22 @@ fn main() {
         let mut buf = PathBuf::new();
         buf.push(file.path().parent().unwrap().to_str().unwrap());
         let file_name = i_file_name.to_str().unwrap().chars();
-        let updated_name: String = file_name.map(|char| {
-            let replace: Vec<&str> = matches.values_of("replace").unwrap_or(Values::default()).collect();
+        let mut updated_name: String = file_name.map(|char| {
             match char {
                 ' ' | '-' => '_',
                 'A'..='Z' => char.to_ascii_lowercase(),
-                _ => if replace.contains(&char.to_string().as_str()) {
-                    '_'
-                } else {
-                    char
-                }
+                _ => char
             }
         }).collect();
+        let replaces: Vec<&str> = matches.values_of("replace").unwrap_or(Values::default()).collect();
+        for replace in replaces {
+            let mut target = "".to_string();
+            for _ in 0..replace.chars().count() {
+                target = target + "_";
+            }
+
+            updated_name = updated_name.replace(replace, target.as_str());
+        }
         buf.push(updated_name);
         let origin_path = file.path();
         let origin_path = origin_path.to_str().unwrap();
