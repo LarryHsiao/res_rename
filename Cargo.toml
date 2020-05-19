@@ -1,6 +1,6 @@
 [package]
 name = "resname"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Larry Hsiao <larryhsiao@larryhsiao.com>"]
 edition = "2018"
 description = "A tool for renaming resource files for project"
@@ -10,3 +10,4 @@ repository = "https://github.com/LarryHsiao/res_rename"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+clap = "2.33.1"
